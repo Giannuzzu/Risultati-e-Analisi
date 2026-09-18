@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0d294b">
+  <title>FantAmici | Risultati & Analisi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="FantAmici Analisi"><span class="brand-mark">FA</span><span><b>FantAmici</b><small>Risultati & Analisi</small></span></a>
+  <nav class="nav" aria-label="Navigazione principale">
+    <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+    <button class="nav-btn" data-page="squadre">Squadre</button>
+  </nav>
+  <label class="import-btn"><input id="fileInput" type="file" accept=".xlsx,.xls">Importa Excel</label>
+</header>
+<main>
+  <section id="statusBar" class="status-wrap">
+    <div><span class="status-dot"></span><span id="statusText">Caricamento dati iniziali…</span></div>
+    <div id="fileMeta"></div>
+  </section>
+
+  <section id="dashboard" class="page active">
+    <div class="hero">
+      <div><p class="eyebrow">FANTAMICI 2026/27</p><h1>Dashboard di campionato</h1><p>Bonus, voti utili e valori di mercato in un’unica vista.</p></div>
+      <div class="matchday-card"><span>Database aggiornato alla</span><strong id="latestMatchday">–</strong><small>Ultima giornata disponibile</small></div>
+    </div>
+
+    <section class="panel">
+      <div class="section-head"><div><p class="eyebrow">PERFORMANCE</p><h2>Analisi Bonus/Malus</h2></div><p>Clicca sulle intestazioni per ordinare.</p></div>
+      <div class="table-scroll"><table id="bonusTable" class="data-table sortable"></table></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head"><div><p class="eyebrow">VALORI DI MERCATO</p><h2>Analisi VdM</h2></div><span id="vdmCaption" class="pill">–</span></div>
+      <div class="rank-grid">
+        <article class="rank-card"><div class="rank-title"><h3>Classifica per VdM medio</h3><span>Tutte le giornate</span></div><div id="avgRank"></div></article>
+        <article class="rank-card"><div class="rank-title"><h3>Classifica ultima giornata</h3><span id="lastRankLabel">–</span></div><div id="lastRank"></div></article>
+      </div>
+    </section>
+  </section>
+
+  <section id="squadre" class="page">
+    <div class="team-toolbar">
+      <div><p class="eyebrow">SCHEDA SQUADRA</p><h1 id="teamTitle">–</h1><p id="teamSubtitle">Analisi voti utili e valore di mercato</p></div>
+      <label>Seleziona squadra<select id="teamSelect"></select></label>
+    </div>
+
+    <section class="team-sheet">
+      <div class="team-info">
+        <div class="info-section"><h3>Bonus/Malus e media voto <span>(voti utili)</span></h3><div class="table-scroll"><table id="teamMetrics" class="mini-table"></table></div></div>
+        <div class="info-section"><h3>Valore di mercato dei voti utili</h3><div id="vdmKpis" class="kpi-grid"></div></div>
+        <div class="info-section chart-section"><h3>VdM per giornata</h3><div class="chart-box"><canvas id="vdmChart"></canvas></div></div>
+      </div>
+      <div class="pitch-card">
+        <div class="pitch-title">TOP 11 <span>MODULO 3-4-3</span></div>
+        <div class="pitch" id="pitch"><div class="penalty top"></div><div class="halfway"></div><div class="center-circle"></div><div class="penalty bottom"></div></div>
+        <div id="topSummary" class="pitch-summary"></div>
+      </div>
+    </section>
+
+    <section class="panel top-table-panel"><div class="section-head"><div><p class="eyebrow">DETTAGLIO</p><h2>Top 11 in tabella</h2></div></div><div class="table-scroll"><table id="top11Table" class="data-table"></table></div></section>
+  </section>
+
+  <section id="emptyState" class="empty-state hidden"><div class="upload-icon">⇧</div><h2>Importa il file Excel</h2><p>Seleziona un file con il foglio <b>Database</b>. Tutte le viste saranno ricalcolate nel browser.</p><label class="import-btn large"><input id="emptyFileInput" type="file" accept=".xlsx,.xls">Scegli file Excel</label></section>
+</main>
+<footer>FantAmici · Elaborazione locale nel browser · Nessun dato viene caricato su server esterni</footer>
+<script src="app.js"></script>
+</body>
+</html>
