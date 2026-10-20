@@ -17,4 +17,5 @@
 .tag-si{background:#e3f4ea;color:var(--green)}
 .tag-no{background:#f8e6e5;color:var(--red)}
 .empty-row{text-align:center!important;color:var(--muted);font-weight:600!important}
+.data-table tfoot tr.sub-total td{background:#f3f7fc;font-weight:700;border-top:1px solid var(--line)}
 @media(max-width:900px){.player-grid{grid-template-columns:1fr}.usage-wrap{grid-template-columns:1fr}.selectors{display:block}}
